@@ -547,9 +547,6 @@ namespace imageDeCap
             {
                 Console.WriteLine("Failed to save jpg");
             }
-            
-            
-
         }
 
         

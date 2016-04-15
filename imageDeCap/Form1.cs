@@ -466,7 +466,17 @@ namespace imageDeCap
                 //}
             }
             Image bitmapImage = Image.FromFile(filePath);
-            Clipboard.SetImage(bitmapImage);
+
+            //TODO: Add error checking for when windows clipboard stops working o.o
+            try
+            {
+                Clipboard.SetImage(bitmapImage);
+            }
+            catch (System.Runtime.InteropServices.ExternalException e)
+            {
+                Console.WriteLine("Failed to copy to clipboard. is windows broken?, \n" + e.Message);
+            }
+
             bitmapImage.Dispose();
 
             string editedPath = System.IO.Path.GetTempPath() + "screenshot_edited.png";
