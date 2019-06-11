@@ -21,8 +21,19 @@ namespace imageDeCap
             if (TextToCopyToClipboard == "")
                 return;
 
-            Clipboard.SetText(TextToCopyToClipboard);
-            TextToCopyToClipboard = "";
+            for (int i = 0; i < 10; i++)
+            {
+                try
+                {
+                    Clipboard.SetText(TextToCopyToClipboard);
+                    TextToCopyToClipboard = "";
+                    return;
+                }
+                catch (Exception)
+                {
+                    Thread.Sleep(100);
+                }
+            }
         }
 
         public static void SetClipboardText(string text)
